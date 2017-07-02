@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SpecialPlayingObject : MonoBehaviour 
 {
@@ -50,40 +51,51 @@ public class SpecialPlayingObject : MonoBehaviour
             PowerIsHorizontal();
         if (myPlayingObject.objectType == ObjectType.Vertical)
             PowerIsVertical();
+		if (myPlayingObject.objectType == ObjectType.Bomb)
+            PowerIsBomb();
     }
 
-    void PowerIsVertical()
-    {
+	void PowerIsBomb(){
+		List<PlayingObject> victims = new List<PlayingObject> ();
         int itemIndex = myPlayingObject.indexInColumn;
+        for (int i = 0; i < myPlayingObject.adjacentItems.Length; i++){
+			if (myPlayingObject.adjacentItems[i] != null){
+				victims.Add (myPlayingObject.adjacentItems [i]);
+            }
+        }
+		victims.Add (myPlayingObject.adjacentItems [2].adjacentItems [0]);
+		victims.Add (myPlayingObject.adjacentItems [2].adjacentItems [1]);
+		victims.Add (myPlayingObject.adjacentItems [3].adjacentItems [0]);
+		victims.Add (myPlayingObject.adjacentItems [3].adjacentItems [1]);
 
-        for (int i = 0; i < myPlayingObject.myColumnScript.playingObjectsScriptList.Count; i++)
-        {
-            if (myPlayingObject.myColumnScript.playingObjectsScriptList[i] != null)
-            {
+		foreach (var victim in victims) {
+			victim.AssignBurst("normal");
+			victim.DestroyMe();
+		}
+       // CreateEffect();
+    }
+
+    void PowerIsVertical(){
+        int itemIndex = myPlayingObject.indexInColumn;
+        for (int i = 0; i < myPlayingObject.myColumnScript.playingObjectsScriptList.Count; i++){
+            if (myPlayingObject.myColumnScript.playingObjectsScriptList[i] != null){
                 PlayingObject po = (PlayingObject)myPlayingObject.myColumnScript.playingObjectsScriptList[i];
                 po.AssignBurst("normal");
                 po.DestroyMe();
             }
         }
-
         CreateEffect();
-
     }
 
-    void PowerIsHorizontal()
-    {
+    void PowerIsHorizontal(){
         int itemIndex = myPlayingObject.indexInColumn;
-
-        for (int i = 0; i < ColumnManager.instance.gameColumns.Length; i++)
-        {
-            if (ColumnManager.instance.gameColumns[i].playingObjectsScriptList[itemIndex] != null)
-            {
+        for (int i = 0; i < ColumnManager.instance.gameColumns.Length; i++){
+            if (ColumnManager.instance.gameColumns[i].playingObjectsScriptList[itemIndex] != null){
                 PlayingObject po = (PlayingObject)ColumnManager.instance.gameColumns[i].playingObjectsScriptList[itemIndex];
                 po.AssignBurst("normal");
                 po.DestroyMe();
             }
         }
-
         CreateEffect();
 
     }

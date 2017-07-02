@@ -14,9 +14,40 @@ public class PlayingObjectTouch : MonoBehaviour
 
     bool isTouched = false;
 
-    internal void OnMouseDown()
-    {
-		
+    internal void OnMouseDown ()
+	{
+		if (Input.GetKey (KeyCode.B)) {
+			int num = 0;
+			switch(this.gameObject.name){
+			case "Playing Object 1(Clone)":
+				num = 17;
+				break;
+			case "Playing Object 2(Clone)":
+				num = 18;
+				break;
+			case "Playing Object 3(Clone)":
+				num = 19;
+				break;
+			case "Playing Object 4(Clone)":
+				num = 20;
+				break;
+				default:
+				num = 0;
+				break;
+			}
+//			GameObject temp5 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [num], Vector3.zero, Quaternion.identity);//ACA (0,6)
+//			PlayingObject po = temp5.GetComponent<PlayingObject> ();
+//			for (int i = 0; i < po.adjacentItems.Length; i++) {
+//				po.adjacentItems [i] = playingObjectScript.adjacentItems [i];
+//			}
+//			po.myColumnScript = playingObjectScript.myColumnScript;
+//			playingObjectScript.myColumnScript.playingObjectsScriptList.Insert (0, temp5.GetComponent<PlayingObject> ()); //numberOfEmptySpace
+//			temp5.transform.parent = playingObjectScript.gameObject.transform.parent;
+//			temp5.transform.localPosition = playingObjectScript.gameObject.transform.localPosition;
+			//Destroy (this.gameObject);
+			playingObjectScript.myColumnScript.ChangeItem (playingObjectScript.indexInColumn, GameManager.instance.playingObjectPrefabs [num], this.gameObject.name);
+			Destroy (this.gameObject);
+		}
         if (GameManager.instance.isBusy)
             return;
 
@@ -24,7 +55,6 @@ public class PlayingObjectTouch : MonoBehaviour
         SoundFxManager.instance.objectPickSound.Play();
 
         ObjectSelected();
-
     }
 
     internal void ObjectSelected()

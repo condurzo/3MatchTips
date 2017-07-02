@@ -152,9 +152,10 @@ public class ColumnScript : MonoBehaviour
 			CheckForJelly(i);
 
 			GameObject temp = (GameObject)Instantiate(objectPrefab, Vector3.zero, Quaternion.identity);
-			temp.GetComponent<PlayingObject>().myColumnScript = this;
-			temp.GetComponent<PlayingObject>().indexInColumn = i;
-			playingObjectsScriptList.Add(temp.GetComponent<PlayingObject>());
+			PlayingObject po = temp.GetComponent<PlayingObject> ();
+			po.myColumnScript = this;
+			po.indexInColumn = i;
+			playingObjectsScriptList.Add(po);
 			temp.transform.parent = transform;
 			temp.transform.localPosition = new Vector3(0, -i * GameManager.instance.gapBetweenObjects, 0);
 
@@ -165,18 +166,17 @@ public class ColumnScript : MonoBehaviour
 
 	internal void AssignNeighbours()
 	{
-		for (int i = 0; i < playingObjectsScriptList.Count; i++)
 		{
-			if (playingObjectsScriptList[i] == null)
+			if (playingObjectsScriptList [i] == null)
 				continue;
 
-			if (columnIndex == 0) //left
-				((PlayingObject)playingObjectsScriptList[i]).adjacentItems[0] = null;
+			if (columnIndex == 0)//left
+				((PlayingObject)playingObjectsScriptList [i]).adjacentItems [0] = null;
 			else
-				((PlayingObject)playingObjectsScriptList[i]).adjacentItems[0] = ((PlayingObject)ColumnManager.instance.gameColumns[columnIndex - 1].playingObjectsScriptList[i]);
+				((PlayingObject)playingObjectsScriptList [i]).adjacentItems [0] = ((PlayingObject)ColumnManager.instance.gameColumns [columnIndex - 1].playingObjectsScriptList [i]);
 
 			if (columnIndex == ColumnManager.instance.gameColumns.Length - 1) // right
-				((PlayingObject)playingObjectsScriptList[i]).adjacentItems[1] = null;
+				((PlayingObject)playingObjectsScriptList [i]).adjacentItems [1] = null;
 			else
 				((PlayingObject)playingObjectsScriptList[i]).adjacentItems[1] = ((PlayingObject)ColumnManager.instance.gameColumns[columnIndex + 1].playingObjectsScriptList[i]);
 
@@ -202,7 +202,6 @@ public class ColumnScript : MonoBehaviour
 		temp.transform.localPosition = new Vector3(0, -index * GameManager.instance.gapBetweenObjects, 0);
 		temp.GetComponent<SpecialPlayingObject>().name = _name;
 		// iTween.ScaleFrom(temp, Vector3.zero, .6f);
-
 		//   print("new Candy Created");
 	}
 

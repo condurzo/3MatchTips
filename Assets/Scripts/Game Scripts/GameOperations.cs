@@ -58,7 +58,6 @@ public class GameOperations : MonoBehaviour
                     ((PlayingObject)ColumnManager.instance.gameColumns[j].playingObjectsScriptList[i]).CheckIfCanBrust();
             }
         }
-       // print(doesHaveBrustItem);
 
         if (doesHaveBrustItem)
         {
@@ -146,7 +145,6 @@ public class GameOperations : MonoBehaviour
                 }
             }
         }
-
         return false;
     }
 

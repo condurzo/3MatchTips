@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{99F663A0-7DA7-CEA6-0260-C801273DCE8F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_5_6_1;UNITY_5_6;UNITY_5;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;ENABLE_VIDEO;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE;UNITY_HAS_GOOGLEVR</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Mias\Scripts\Menu.cs" />
+     <Compile Include="Assets\Mias\Scripts\SoundManager.cs" />
+     <Compile Include="Assets\Mias\Scripts\SoundManagerHome.cs" />
+     <Compile Include="Assets\Mias\Scripts\Tiempo.cs" />
+     <Compile Include="Assets\Mias\Scripts\changeName.cs" />
+     <Compile Include="Assets\Mias\Scripts\isLive.cs" />
+     <Compile Include="Assets\Mias\Scripts\isLiveNormal.cs" />
+     <Compile Include="Assets\Mias\Scripts\isLiveSigno.cs" />
+     <Compile Include="Assets\Mias\Scripts\selectLevels.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\BackButton.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\ColumnManager.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\ColumnScript.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\ColumnStructure.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\DestroyOnStart.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\GameOperations.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\GamePrefabs.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\LevelStructure.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\MainCameraScript.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\PlayingObject.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\PlayingObjectTouch.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\SoundFxManager.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\SpecialItemFormationScript.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\SpecialPlayingObject.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\SwapSpecialObjects.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\SwapTwoObject.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\SwapUniversalAndHorizontal.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\iTween.cs" />
+     <Compile Include="Assets\Scripts\Main Menu Scripts\LevelButton.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Camera\tk2dCamera.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Camera\tk2dCameraAnchor.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Camera\tk2dCameraUtil.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Fonts\tk2dFont.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Fonts\tk2dFontData.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Fonts\tk2dTextGeomGen.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Fonts\tk2dTextMesh.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Gui\tk2dButton.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Runtime\tk2dResource.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Runtime\tk2dSystem.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Runtime\tk2dUpdateManager.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dAnimatedSprite.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dBaseSprite.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dClippedSprite.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dEditorSpriteDataUnloader.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dPixelPerfectHelper.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dRuntimeSpriteCollection.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dSlicedSprite.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dSprite.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dSpriteAnimation.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dSpriteAnimator.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dSpriteAttachPoint.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dSpriteCollection.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dSpriteCollectionData.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dSpriteCollectionInterfaces.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dSpriteCollectionSize.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dSpriteFromTexture.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dSpriteGeomGen.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dStaticSpriteBatcher.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\Sprites\tk2dTiledSprite.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Code\tk2dUtil.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d\Test.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dTileMap\Code\tk2dTileMap.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dTileMap\Code\tk2dTileMapBuilderUtil.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dTileMap\Code\tk2dTileMapChunks.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dTileMap\Code\tk2dTileMapColliderBuilder.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dTileMap\Code\tk2dTileMapColliderBuilder2D.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dTileMap\Code\tk2dTileMapData.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dTileMap\Code\tk2dTileMapMeshBuilder.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dTileMap_demo\Demo1\Scripts\tk2dTileMapDemoCoin.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dTileMap_demo\Demo1\Scripts\tk2dTileMapDemoFollowCam.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dTileMap_demo\Demo1\Scripts\tk2dTileMapDemoPlayer.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUIBaseItemControl.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUIDragItem.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUIDropDownItem.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUIDropDownMenu.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUIHoverItem.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUIMultiStateToggleButton.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUIProgressBar.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUIScrollableArea.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUIScrollbar.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUISoundItem.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUITextInput.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUIToggleButton.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUIToggleButtonGroup.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUIToggleControl.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUITweenItem.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUIUpDownButton.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Controls\tk2dUIUpDownHoverButton.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Core\tk2dUIAudioManager.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Core\tk2dUICamera.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Core\tk2dUIItem.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Core\tk2dUILayout.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Core\tk2dUILayoutContainer.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Core\tk2dUILayoutContainerSizer.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Core\tk2dUIManager.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Core\tk2dUIMask.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Core\tk2dUISpriteAnimator.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Core\tk2dUITime.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI\Code\Core\tk2dUITouch.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI_demo\tk2dUIBaseDemoController.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI_demo\tk2dUIDemo2Controller.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI_demo\tk2dUIDemo3Controller.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI_demo\tk2dUIDemo5Controller.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI_demo\tk2dUIDemo6Controller.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2dUI_demo\tk2dUIDemoController.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d_demo\tk2dDemoAnimController.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d_demo\tk2dDemoButtonController.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d_demo\tk2dDemoCameraController.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d_demo\tk2dDemoReloadController.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d_demo\tk2dDemoRuntimeSpriteController.cs" />
+     <Compile Include="Assets\uGUITools.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Accordion\Accordion.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Accordion\AccordionElement.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Accordion\Tweening\FloatTween.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Accordion\Tweening\ITweenValue.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Accordion\Tweening\TweenRunner.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\BoundTooltip\BoundTooltipItem.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\BoundTooltip\BoundTooltipTrigger.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ComboBox\AutoCompleteComboBox.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ComboBox\ComboBox.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ComboBox\DropDownList.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ComboBox\DropDownListButton.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ComboBox\DropDownListItem.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Effects\BestFitOutline.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Effects\CurvedText.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Effects\CylinderText.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Effects\Gradient.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Effects\LetterSpacing.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Effects\NicerOutline.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Effects\SoftMaskScript.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Effects\UIFlippable.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Effects\UIImageCrop.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\HSVPicker\ColorPickerTester.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\HSVPicker\HSVPicker.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\HSVPicker\HSVSliderEvent.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\HSVPicker\HSVUtil.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\HSVPicker\HexRGB.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\HSVPicker\HsvBoxSelector.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\HSVPicker\HsvSliderPicker.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ImageExtended.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\InputFieldEnterSubmit.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\InputFocus.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\InputModules\AimerInputModule.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\InputModules\GamePadInputModule.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Layout\FlowLayoutGroup.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Layout\HorizontalScrollSnap.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Layout\RadialLayout.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Layout\ScrollSnap.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Layout\TileSizeFitter.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Layout\VerticalScrollSnap.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Primitives\DiamondGraph.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Primitives\UICircle.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Primitives\UICornerCut.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Primitives\UILineRenderer.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Primitives\UILineTextureRenderer.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\RaycastMask.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ReorderableList\ReorderableList.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ReorderableList\ReorderableListContent.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ReorderableList\ReorderableListDebug.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ReorderableList\ReorderableListElement.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\RescalingPanels\RescaleDragPanel.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\RescalingPanels\RescalePanel.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\RescalingPanels\ResizePanel.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ReturnKeyTriggersButton.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ScrollRectEx.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ScrollRectExtensions.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ScrollRectLinker.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ScrollRectTweener.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\SelectionBox\ExampleSelectable.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\SelectionBox\IBoxSelectable.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\SelectionBox\SelectionBox.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\TabNavigation.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\ToolTip.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\UIScrollToSelection.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\UIScrollToSelectionXY.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\UISelectableExtension.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\UIWindowBase.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Utilities\HoverTooltip.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Utilities\SetPropertyUtility.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Utilities\switchToRectTransform.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\VR Extensions\VRCursor.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\VR Extensions\VRInputModule.cs" />
+     <None Include="Assets\TK2DROOT\tk2d\Shaders\LitSolidVertexColor.shader" />
+     <None Include="Assets\unity-ui-extensions\Shaders\SoftMaskShaderText.shader" />
+     <None Include="Assets\TK2DROOT\tk2d\Goodies\TexturePacker\Exporter\2dtoolkit\exporter.xml" />
+     <None Include="Assets\TK2DROOT\tk2d\Shaders\SolidVertexColor.shader" />
+     <None Include="Assets\TK2DROOT\tk2dUI\Shaders\DepthMask.shader" />
+     <None Include="Assets\TK2DROOT\tk2d\Shaders\LitPremulVertexColor.shader" />
+     <None Include="Assets\TK2DROOT\tk2d\Shaders\PremulVertexColor.shader" />
+     <None Include="Assets\TK2DROOT\tk2d_demo\Credits.txt" />
+     <None Include="Assets\TK2DROOT\tk2d\Shaders\goodies\PackedTextMesh.shader" />
+     <None Include="Assets\unity-ui-extensions\Shaders\SoftMaskShader.shader" />
+     <None Include="Assets\TK2DROOT\tk2d\Shaders\Blend2TexVertexColor.shader" />
+     <None Include="Assets\TK2DROOT\tk2dUI\Shaders\DepthMaskSolid.shader" />
+     <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Dark\Fonts\Nunito24.fnt" />
+     <None Include="Assets\TK2DROOT\tk2d\Shaders\resources\BlendVertexColor.shader" />
+     <None Include="Assets\unity-ui-extensions\Shaders\UIImageCrop.shader" />
+     <None Include="Assets\TK2DROOT\tk2d\Shaders\LitCutoutVertexColor.shader" />
+     <None Include="Assets\TK2DROOT\tk2d\Editor\EditorUtility.shader" />
+     <None Include="Assets\TK2DROOT\tk2d\Shaders\CutoutVertexColor.shader" />
+     <None Include="Assets\TK2DROOT\tk2d_demo\demobmfont\test.fnt" />
+     <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Font\OldSansBlack\OldSansBlack.fnt" />
+     <None Include="Assets\TK2DROOT\tk2d\Shaders\LitBlendVertexColor.shader" />
+     <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Dark\Fonts\Nunito16.fnt" />
+     <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Dark\Fonts\Nunito32.fnt" />
+     <None Include="Assets\TK2DROOT\tk2d\Shaders\AdditiveVertexColor.shader" />
+     <None Include="Assets\TK2DROOT\tk2d_demo\democameradata\source\democamerafont.fnt" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TestRunner">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/TestRunner/nunit.framework.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.HoloLens">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.VR">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

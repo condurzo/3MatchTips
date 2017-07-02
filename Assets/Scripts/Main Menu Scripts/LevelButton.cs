@@ -7,7 +7,7 @@ public class LevelButton : MonoBehaviour {
 
 	void Start () 
     {
-        transform.FindChild("Text").GetComponent<TextMesh>().text = name;
+        transform.Find("Text").GetComponent<TextMesh>().text = name;
 	
 	}
 

@@ -8,7 +8,8 @@ public enum ObjectType
     Vertical,
     Universal,
 	Doble,
-	Signo
+	Signo,
+	Bomb
 };
 
 public class PlayingObject : MonoBehaviour 
@@ -206,62 +207,50 @@ public class PlayingObject : MonoBehaviour
 
     internal bool JustCheckIfCanBrust(string objName, int parentIndex)//ACA ROMPE DE A TRES
     {
+		AssignLRUD ();
+		if (parentIndex == 0)
+			right1 = "right1";
+		if (parentIndex == 1)
+			left1 = "left1";
+		if (parentIndex == 2)
+			down1 = "down1";
+		if (parentIndex == 3)
+			up1 = "up1";
 
-				
-				AssignLRUD ();
+		bool canBurst = false;
+	
+		if ((objName == left1 && objName == left2) || (objName == left1 && objName == right1) || (objName == right1 && objName == right2)
+		    || (objName == up1 && objName == up2) || (objName == up1 && objName == down1) || (objName == down1 && objName == down2)) {
+			canBurst = true;
+			GameOperations.instance.doesHaveBrustItem = true;
 
-				if (parentIndex == 0)
-					right1 = "right1";
-				if (parentIndex == 1)
-					left1 = "left1";
-				if (parentIndex == 2)
-					down1 = "down1";
-				if (parentIndex == 3)
-					up1 = "up1";
+		}
+		if (canBurst) {
+			if (parentCallingScript)
 
-				bool canBurst = false;
-			
-				if ((objName == left1 && objName == left2) || (objName == left1 && objName == right1) || (objName == right1 && objName == right2)
-				    || (objName == up1 && objName == up2) || (objName == up1 && objName == down1) || (objName == down1 && objName == down2)) {
-					canBurst = true;
-					GameOperations.instance.doesHaveBrustItem = true;
-
-				}
-				if (canBurst) {
-					if (parentCallingScript)
-
-						CheckForSpecialCandyFormation (objName);
-				}
-
-
-				return canBurst;
-		
-
+				CheckForSpecialCandyFormation (objName);
+		}
+		return canBurst;
     }
 
     internal bool CheckIfCanBrust()
     {
-		
-
-			if (isDestroyed)
-				return false;
-			if (Tiempo.Playing) {
-				if (brust) {
-					GameOperations.instance.doesHaveBrustItem = true;
-					return true;
-				}
-
-				AssignLRUD ();
-
-				if ((name == left1 && name == left2) || (name == left1 && name == right1) || (name == right1 && name == right2)
-				   || (name == up1 && name == up2) || (name == up1 && name == down1) || (name == down1 && name == down2)) {
-					AssignBurst ("normal");
-					GameOperations.instance.doesHaveBrustItem = true;
-				}
+		if (isDestroyed)
+			return false;
+		if (Tiempo.Playing) {
+			if (brust) {
+				GameOperations.instance.doesHaveBrustItem = true;
+				return true;
 			}
-		
-			return brust;
+			AssignLRUD ();
+			if ((name == left1 && name == left2) || (name == left1 && name == right1) || (name == right1 && name == right2)
+			   || (name == up1 && name == up2) || (name == up1 && name == down1) || (name == down1 && name == down2)) {
+				AssignBurst ("normal");
+				GameOperations.instance.doesHaveBrustItem = true;
+			}
+		}
 
+		return brust;
     }
 
     string brustBy = "normal";
@@ -421,7 +410,7 @@ public class PlayingObject : MonoBehaviour
 			if (Tiempo.Playing) {
 
 				isSelected = true;
-				transform.FindChild ("Image").GetComponent<Renderer> ().material.SetColor ("_TintColor", new Color (1, 1, 1, .5f));
+				transform.Find ("Image").GetComponent<Renderer> ().material.SetColor ("_TintColor", new Color (1, 1, 1, .5f));
 			}
 
     }
@@ -431,7 +420,7 @@ public class PlayingObject : MonoBehaviour
 			if (Tiempo.Playing) {
 
 				isSelected = false;
-				transform.FindChild ("Image").GetComponent<Renderer> ().material.SetColor ("_TintColor", new Color (.5f, .5f, .5f, .5f));
+				transform.Find ("Image").GetComponent<Renderer> ().material.SetColor ("_TintColor", new Color (.5f, .5f, .5f, .5f));
 
 		}
     }
@@ -447,7 +436,7 @@ public class PlayingObject : MonoBehaviour
     {
 			if (Tiempo.Playing) {
 
-				transform.FindChild ("Image").GetComponent<Renderer> ().material.SetColor ("_TintColor", new Color (.2f, .2f, .2f, .5f));
+				transform.Find ("Image").GetComponent<Renderer> ().material.SetColor ("_TintColor", new Color (.2f, .2f, .2f, .5f));
 			}
 		}
     
