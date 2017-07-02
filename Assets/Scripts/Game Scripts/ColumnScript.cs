@@ -166,6 +166,7 @@ public class ColumnScript : MonoBehaviour
 
 	internal void AssignNeighbours()
 	{
+		for (int i = 0; i < playingObjectsScriptList.Count; i++) 
 		{
 			if (playingObjectsScriptList [i] == null)
 				continue;
