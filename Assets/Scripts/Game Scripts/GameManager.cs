@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     internal TextMesh scoreText;
     internal TextMesh jellyText;
     int score;
+	int temp;
 	int bestScoreTemp;
 
 	public GameObject NewBestScoreText;
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     internal static int numberOfItemsPoppedInaRow = 0;
     
+	public static bool explotoAgua;
 
     void Awake()
     {
@@ -59,7 +61,18 @@ public class GameManager : MonoBehaviour
 
     internal void AddScore()
     {
-		int temp = 2 * numberOfItemsPoppedInaRow * (numberOfItemsPoppedInaRow / 5 + 1);
+		//ACA logica para sumar los puntos dependiendo el ambiente
+		if (Tiempo.AguaBool) {
+			if (explotoAgua) {
+				temp = 100;
+				explotoAgua = false;
+			} else {
+				temp = 50;
+			}
+		}
+		//int temp = 2 * numberOfItemsPoppedInaRow; //* (numberOfItemsPoppedInaRow / 5 + 1);
+
+		Debug.Log (numberOfItemsPoppedInaRow);
       //  print(temp);
         score += temp;
         //scoreText.text = "Score : " + score.ToString();

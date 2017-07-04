@@ -322,12 +322,20 @@ public class ColumnScript : MonoBehaviour
 						temp2.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
 					}
 					break;
-				case 3:
-					GameObject temp3 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)
-					temp3.GetComponent<PlayingObject> ().myColumnScript = this;
-					playingObjectsScriptList.Insert (0, temp3.GetComponent<PlayingObject> ()); //numberOfEmptySpace
-					temp3.transform.parent = transform;
-					temp3.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
+				case 3://SOL
+					if (PlayerPrefs.GetInt ("TodosActivados") == 1) {
+						GameObject temp3 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [21], Vector3.zero, Quaternion.identity);//ACA (0,6)
+						temp3.GetComponent<PlayingObject> ().myColumnScript = this;
+						playingObjectsScriptList.Insert (0, temp3.GetComponent<PlayingObject> ()); //numberOfEmptySpace
+						temp3.transform.parent = transform;
+						temp3.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
+					} else {
+						GameObject temp3 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)
+						temp3.GetComponent<PlayingObject> ().myColumnScript = this;
+						playingObjectsScriptList.Insert (0, temp3.GetComponent<PlayingObject> ()); //numberOfEmptySpace
+						temp3.transform.parent = transform;
+						temp3.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
+					}
 					break;
 				case 4:
 					GameObject temp4 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)
@@ -494,12 +502,20 @@ public class ColumnScript : MonoBehaviour
 						temp2.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
 					}
 						break;
-					case 3:
-						GameObject temp3 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)
-						temp3.GetComponent<PlayingObject> ().myColumnScript = this;
-						playingObjectsScriptList.Insert (0, temp3.GetComponent<PlayingObject> ()); //numberOfEmptySpace
-						temp3.transform.parent = transform;
-						temp3.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
+					case 3://SOL
+						if (PlayerPrefs.GetInt ("TodosActivados") == 1) {
+							GameObject temp3 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [21], Vector3.zero, Quaternion.identity);//ACA (0,6)
+							temp3.GetComponent<PlayingObject> ().myColumnScript = this;
+							playingObjectsScriptList.Insert (0, temp3.GetComponent<PlayingObject> ()); //numberOfEmptySpace
+							temp3.transform.parent = transform;
+							temp3.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
+						} else {
+							GameObject temp3 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)
+							temp3.GetComponent<PlayingObject> ().myColumnScript = this;
+							playingObjectsScriptList.Insert (0, temp3.GetComponent<PlayingObject> ()); //numberOfEmptySpace
+							temp3.transform.parent = transform;
+							temp3.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
+						}
 						break;
 					case 4:
 						GameObject temp4 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)
@@ -666,12 +682,20 @@ public class ColumnScript : MonoBehaviour
 						temp2.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
 					}
 						break;
-					case 3:
-						GameObject temp3 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)
-						temp3.GetComponent<PlayingObject> ().myColumnScript = this;
-						playingObjectsScriptList.Insert (0, temp3.GetComponent<PlayingObject> ()); //numberOfEmptySpace
-						temp3.transform.parent = transform;
-						temp3.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
+					case 3://SOL
+						if (PlayerPrefs.GetInt ("TodosActivados") == 1) {
+							GameObject temp3 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [21], Vector3.zero, Quaternion.identity);//ACA (0,6)
+							temp3.GetComponent<PlayingObject> ().myColumnScript = this;
+							playingObjectsScriptList.Insert (0, temp3.GetComponent<PlayingObject> ()); //numberOfEmptySpace
+							temp3.transform.parent = transform;
+							temp3.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
+						} else {
+							GameObject temp3 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)
+							temp3.GetComponent<PlayingObject> ().myColumnScript = this;
+							playingObjectsScriptList.Insert (0, temp3.GetComponent<PlayingObject> ()); //numberOfEmptySpace
+							temp3.transform.parent = transform;
+							temp3.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
+						}
 						break;
 					case 4:
 						GameObject temp4 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)
@@ -836,12 +860,20 @@ public class ColumnScript : MonoBehaviour
 						temp2.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
 					}
 						break;
-					case 3:
-						GameObject temp3 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)
-						temp3.GetComponent<PlayingObject> ().myColumnScript = this;
-						playingObjectsScriptList.Insert (0, temp3.GetComponent<PlayingObject> ()); //numberOfEmptySpace
-						temp3.transform.parent = transform;
-						temp3.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
+					case 3://SOL
+						if (PlayerPrefs.GetInt ("TodosActivados") == 1) {
+							GameObject temp3 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [21], Vector3.zero, Quaternion.identity);//ACA (0,6)
+							temp3.GetComponent<PlayingObject> ().myColumnScript = this;
+							playingObjectsScriptList.Insert (0, temp3.GetComponent<PlayingObject> ()); //numberOfEmptySpace
+							temp3.transform.parent = transform;
+							temp3.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
+						} else {
+							GameObject temp3 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)
+							temp3.GetComponent<PlayingObject> ().myColumnScript = this;
+							playingObjectsScriptList.Insert (0, temp3.GetComponent<PlayingObject> ()); //numberOfEmptySpace
+							temp3.transform.parent = transform;
+							temp3.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
+						}
 						break;
 					case 4:
 						GameObject temp4 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)

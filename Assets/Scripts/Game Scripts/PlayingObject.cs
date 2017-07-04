@@ -334,7 +334,14 @@ public class PlayingObject : MonoBehaviour
 				}
 
 				isDestroyed = true;
-				GameManager.numberOfItemsPoppedInaRow++;
+				//GameManager.numberOfItemsPoppedInaRow++;
+				//ACA chekeo el color de la bola que exploto
+				Debug.Log(this.gameObject.name);
+				if(this.gameObject.name == "Playing Object 1(Clone)"){
+					GameManager.explotoAgua = true;
+				}
+				
+				
 				GameManager.instance.AddScore ();
 
 				if (specialObjectScript) {
