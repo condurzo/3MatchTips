@@ -171,10 +171,14 @@ public class ColumnScript : MonoBehaviour
 			if (playingObjectsScriptList [i] == null)
 				continue;
 
-			if (columnIndex == 0)//left
+			if (columnIndex == 0) {//left
 				((PlayingObject)playingObjectsScriptList [i]).adjacentItems [0] = null;
-			else
+			} else {
+				Debug.Log (i);
+ 				Debug.Log (((PlayingObject)playingObjectsScriptList [i]).adjacentItems [0]);
+				Debug.Log (  ((PlayingObject)ColumnManager.instance.gameColumns [columnIndex - 1].playingObjectsScriptList [i])  );
 				((PlayingObject)playingObjectsScriptList [i]).adjacentItems [0] = ((PlayingObject)ColumnManager.instance.gameColumns [columnIndex - 1].playingObjectsScriptList [i]);
+			}
 
 			if (columnIndex == ColumnManager.instance.gameColumns.Length - 1) // right
 				((PlayingObject)playingObjectsScriptList [i]).adjacentItems [1] = null;
@@ -1037,7 +1041,7 @@ public class ColumnScript : MonoBehaviour
 
 	float fallingDuration;
 
-	void StartMovingDownOldPart()
+	public void StartMovingDownOldPart()
 	{
 
 		for (int i = numberOfItemsToAdd; i < playingObjectsScriptList.Count; i++)
@@ -1047,7 +1051,7 @@ public class ColumnScript : MonoBehaviour
 		}
 	}
 
-	void StartMovingDownNewPart()
+	public void StartMovingDownNewPart()
 	{       
 
 		for (int i = 0; i < numberOfItemsToAdd; i++)

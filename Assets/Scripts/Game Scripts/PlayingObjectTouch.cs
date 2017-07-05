@@ -46,7 +46,11 @@ public class PlayingObjectTouch : MonoBehaviour
 //			temp5.transform.localPosition = playingObjectScript.gameObject.transform.localPosition;
 			//Destroy (this.gameObject);
 			playingObjectScript.myColumnScript.ChangeItem (playingObjectScript.indexInColumn, GameManager.instance.playingObjectPrefabs [num], this.gameObject.name);
+			playingObjectScript.myColumnScript.StartMovingDownOldPart ();
+			playingObjectScript.myColumnScript.StartMovingDownNewPart();
 			Destroy (this.gameObject);
+			GameOperations.instance.AssignNeighbours ();
+
 		}
         if (GameManager.instance.isBusy)
             return;

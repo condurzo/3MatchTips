@@ -224,6 +224,16 @@ public class PlayingObject : MonoBehaviour
 			canBurst = true;
 			GameOperations.instance.doesHaveBrustItem = true;
 
+		} else {
+			Debug.Log (objName);
+			Debug.Log (left1);
+			Debug.Log (left2);
+			Debug.Log (right1);
+			Debug.Log (right2);
+			Debug.Log (up1);
+			Debug.Log (up2);
+			Debug.Log (down1);
+			Debug.Log (down2);
 		}
 		if (canBurst) {
 			if (parentCallingScript)
@@ -278,6 +288,7 @@ public class PlayingObject : MonoBehaviour
 
 			for (int i = 0; i < 4; i++) {
 				if (adjacentItems [i]) {
+				Debug.Log (adjacentItems [i].JustCheckIfCanBrust (name, i));
 					if (adjacentItems [i].JustCheckIfCanBrust (name, i)) {
 						GameOperations.instance.suggestionItems [0] = this;
 						GameOperations.instance.suggestionItems [1] = adjacentItems [i];
@@ -296,8 +307,9 @@ public class PlayingObject : MonoBehaviour
     {
 
 			parentCallingScript = this;
-
+			
 			if (adjacentItems [dir]) {
+			Debug.Log (adjacentItems [dir].JustCheckIfCanBrust (name, dir));
 				if (adjacentItems [dir].JustCheckIfCanBrust (name, dir)) {
 					return true;
 				}
