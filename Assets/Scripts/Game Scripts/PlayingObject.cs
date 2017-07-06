@@ -224,16 +224,6 @@ public class PlayingObject : MonoBehaviour
 			canBurst = true;
 			GameOperations.instance.doesHaveBrustItem = true;
 
-		} else {
-			Debug.Log (objName);
-			Debug.Log (left1);
-			Debug.Log (left2);
-			Debug.Log (right1);
-			Debug.Log (right2);
-			Debug.Log (up1);
-			Debug.Log (up2);
-			Debug.Log (down1);
-			Debug.Log (down2);
 		}
 		if (canBurst) {
 			if (parentCallingScript)

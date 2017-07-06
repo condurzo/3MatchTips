@@ -252,6 +252,7 @@ public class ColumnScript : MonoBehaviour
 	{
 		for (int i = numberOfRows - 1; i >= 0; i--)
 		{
+
 			if (itemAvailability[i] >= 1 && playingObjectsScriptList[i] == null)
 			{
 				for (int j = i; j >= 0; j--)
@@ -384,14 +385,14 @@ public class ColumnScript : MonoBehaviour
 					temp9.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
 					break;
 				case 10:
-					GameObject temp10 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)
+					GameObject temp10 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [18], Vector3.zero, Quaternion.identity);//ACA (0,6)
 					temp10.GetComponent<PlayingObject> ().myColumnScript = this;
 					playingObjectsScriptList.Insert (0, temp10.GetComponent<PlayingObject> ()); //numberOfEmptySpace
 					temp10.transform.parent = transform;
 					temp10.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
 					break;
 				case 11:
-					GameObject temp11 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)
+					GameObject temp11 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [18], Vector3.zero, Quaternion.identity);//ACA (0,6)
 					temp11.GetComponent<PlayingObject> ().myColumnScript = this;
 					playingObjectsScriptList.Insert (0, temp11.GetComponent<PlayingObject> ()); //numberOfEmptySpace
 					temp11.transform.parent = transform;

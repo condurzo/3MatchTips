@@ -55,22 +55,33 @@ public class SpecialPlayingObject : MonoBehaviour
             PowerIsBomb();
     }
 
-	void PowerIsBomb(){
+	void PowerIsBomb ()
+	{
 		List<PlayingObject> victims = new List<PlayingObject> ();
-        int itemIndex = myPlayingObject.indexInColumn;
-        for (int i = 0; i < myPlayingObject.adjacentItems.Length; i++){
-			if (myPlayingObject.adjacentItems[i] != null){
+		int itemIndex = myPlayingObject.indexInColumn;
+		for (int i = 0; i < myPlayingObject.adjacentItems.Length; i++) {
+			if (myPlayingObject.adjacentItems [i] != null) {
 				victims.Add (myPlayingObject.adjacentItems [i]);
-            }
-        }
-		victims.Add (myPlayingObject.adjacentItems [2].adjacentItems [0]);
-		victims.Add (myPlayingObject.adjacentItems [2].adjacentItems [1]);
-		victims.Add (myPlayingObject.adjacentItems [3].adjacentItems [0]);
-		victims.Add (myPlayingObject.adjacentItems [3].adjacentItems [1]);
+			}
+		}
+		if (myPlayingObject.adjacentItems [2] != null) {
+			if (myPlayingObject.adjacentItems [2].adjacentItems.Length > 2) {
+				victims.Add (myPlayingObject.adjacentItems [2].adjacentItems [0]);
+				victims.Add (myPlayingObject.adjacentItems [2].adjacentItems [1]);
+			}
+		}
+		if (myPlayingObject.adjacentItems [3] != null) {
+			if (myPlayingObject.adjacentItems [3].adjacentItems.Length > 2) {
+				victims.Add (myPlayingObject.adjacentItems [3].adjacentItems [0]);
+				victims.Add (myPlayingObject.adjacentItems [3].adjacentItems [1]);
+			}
+		}
 
 		foreach (var victim in victims) {
-			victim.AssignBurst("normal");
-			victim.DestroyMe();
+			if (victim != null) {
+				victim.AssignBurst ("normal");
+				victim.DestroyMe ();
+			}
 		}
        // CreateEffect();
     }
