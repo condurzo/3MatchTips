@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour
 		}
 		//int temp = 2 * numberOfItemsPoppedInaRow; //* (numberOfItemsPoppedInaRow / 5 + 1);
 
-		Debug.Log (numberOfItemsPoppedInaRow);
       //  print(temp);
         score += temp;
         //scoreText.text = "Score : " + score.ToString();

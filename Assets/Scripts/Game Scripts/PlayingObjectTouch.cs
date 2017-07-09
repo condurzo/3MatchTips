@@ -35,22 +35,18 @@ public class PlayingObjectTouch : MonoBehaviour
 				num = 0;
 				break;
 			}
-//			GameObject temp5 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [num], Vector3.zero, Quaternion.identity);//ACA (0,6)
-//			PlayingObject po = temp5.GetComponent<PlayingObject> ();
-//			for (int i = 0; i < po.adjacentItems.Length; i++) {
-//				po.adjacentItems [i] = playingObjectScript.adjacentItems [i];
-//			}
-//			po.myColumnScript = playingObjectScript.myColumnScript;
-//			playingObjectScript.myColumnScript.playingObjectsScriptList.Insert (0, temp5.GetComponent<PlayingObject> ()); //numberOfEmptySpace
-//			temp5.transform.parent = playingObjectScript.gameObject.transform.parent;
-//			temp5.transform.localPosition = playingObjectScript.gameObject.transform.localPosition;
-			//Destroy (this.gameObject);
-			playingObjectScript.myColumnScript.ChangeItem (playingObjectScript.indexInColumn, GameManager.instance.playingObjectPrefabs [num], this.gameObject.name);
+		GameObject bomb = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [num], Vector3.zero, Quaternion.identity);//ACA (0,6)
+			bomb.transform.SetParent(this.gameObject.transform.parent);
+			CopyComponent<PlayingObject> (playingObjectScript, bomb);
+			bomb.GetComponent<PlayingObject> ().objectType = ObjectType.Bomb;
+			playingObjectScript.myColumnScript.playingObjectsScriptList[playingObjectScript.indexInColumn]=bomb.GetComponent<PlayingObject>();
 			playingObjectScript.myColumnScript.StartMovingDownOldPart ();
 			playingObjectScript.myColumnScript.StartMovingDownNewPart();
-			Destroy (this.gameObject);
+			playingObjectScript.myColumnScript.DonarAdyacentes (playingObjectScript, bomb.GetComponent<PlayingObject> ());
+			bomb.GetComponent<PlayingObject> ().adjacentItems = playingObjectScript.adjacentItems;
 			GameOperations.instance.AssignNeighbours ();
-
+			Destroy (this.gameObject);
+			return;
 		}
         if (GameManager.instance.isBusy)
             return;
@@ -60,6 +56,26 @@ public class PlayingObjectTouch : MonoBehaviour
 
         ObjectSelected();
     }
+
+	T CopyComponent<T>(T original, GameObject destination) where T : Component
+     {
+         System.Type type = original.GetType();
+         var dst = destination.GetComponent(type) as T;
+         if (!dst) dst = destination.AddComponent(type) as T;
+         var fields = type.GetFields();
+         foreach (var field in fields)
+         {
+             if (field.IsStatic) continue;
+             field.SetValue(dst, field.GetValue(original));
+         }
+         var props = type.GetProperties();
+         foreach (var prop in props)
+         {
+             if (!prop.CanWrite || !prop.CanWrite || prop.Name == "name") continue;
+             prop.SetValue(dst, prop.GetValue(original, null), null);
+         }
+         return dst as T;
+     }
 
     internal void ObjectSelected()
     {
@@ -92,39 +108,46 @@ public class PlayingObjectTouch : MonoBehaviour
     }
 
 
-    void OnMouseDrag()
-    {
-        if (!isTouched)
-            return;
+    void OnMouseDrag ()
+	{
+		if (!isTouched)
+			return;
 
-        Vector3 tempPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		Vector3 tempPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
         
-        if (Vector2.Distance(transform.position, tempPosition) > GameManager.instance.gapBetweenObjects * .4f)
-        {
-            if (Mathf.Abs(tempPosition.x - transform.position.x) > Mathf.Abs(tempPosition.y - transform.position.y)) //left right moved
-            {
-                if (tempPosition.x > transform.position.x)
-                {
-                    if (playingObjectScript.adjacentItems[0] != null)
-                        playingObjectScript.adjacentItems[0].GetComponent<PlayingObjectTouch>().ObjectSelected();
-                }
-                else
-                {
-                    if (playingObjectScript.adjacentItems[1] != null)
-                        playingObjectScript.adjacentItems[1].GetComponent<PlayingObjectTouch>().ObjectSelected();
+		if (Vector2.Distance (transform.position, tempPosition) > GameManager.instance.gapBetweenObjects * .4f) {
+			if (Mathf.Abs (tempPosition.x - transform.position.x) > Mathf.Abs (tempPosition.y - transform.position.y)) { //left right moved
+				if (tempPosition.x > transform.position.x) {
+					if (playingObjectScript.adjacentItems.Izquierda != null) {
+						playingObjectScript.adjacentItems.Izquierda.GetComponent<PlayingObjectTouch> ().ObjectSelected ();
+					} else {
+						Debug.Log("NULL");
+					}
+					} else {
+						if (playingObjectScript.adjacentItems.Derecha != null) {
+							playingObjectScript.adjacentItems.Derecha.GetComponent<PlayingObjectTouch> ().ObjectSelected ();
+					}else {
+						Debug.Log("NULL");
+					}
                 }
             }
             else
             {
                 if (tempPosition.y > transform.position.y)
                 {
-                    if (playingObjectScript.adjacentItems[2] != null)
-                        playingObjectScript.adjacentItems[2].GetComponent<PlayingObjectTouch>().ObjectSelected();
+                    if (playingObjectScript.adjacentItems.Arriba != null){
+                        playingObjectScript.adjacentItems.Arriba.GetComponent<PlayingObjectTouch>().ObjectSelected();
+					}else {
+						Debug.Log("NULL");
+					}
                 }
                 else
                 {
-                    if (playingObjectScript.adjacentItems[3] != null)
-                        playingObjectScript.adjacentItems[3].GetComponent<PlayingObjectTouch>().ObjectSelected();
+                    if (playingObjectScript.adjacentItems.Abajo != null){
+                        playingObjectScript.adjacentItems.Abajo.GetComponent<PlayingObjectTouch>().ObjectSelected();
+					}else {
+						Debug.Log("NULL");
+					}
                 }
             }
 

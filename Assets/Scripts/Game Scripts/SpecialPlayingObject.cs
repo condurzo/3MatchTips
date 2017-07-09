@@ -59,21 +59,21 @@ public class SpecialPlayingObject : MonoBehaviour
 	{
 		List<PlayingObject> victims = new List<PlayingObject> ();
 		int itemIndex = myPlayingObject.indexInColumn;
-		for (int i = 0; i < myPlayingObject.adjacentItems.Length; i++) {
-			if (myPlayingObject.adjacentItems [i] != null) {
-				victims.Add (myPlayingObject.adjacentItems [i]);
+		victims.Add (myPlayingObject.adjacentItems.Izquierda);
+		victims.Add (myPlayingObject.adjacentItems.Derecha);
+		victims.Add (myPlayingObject.adjacentItems.Abajo);
+		victims.Add (myPlayingObject.adjacentItems.Arriba);
+
+		if (myPlayingObject.adjacentItems.Arriba != null) {
+			if ((myPlayingObject.adjacentItems.Arriba.adjacentItems.Izquierda!=null)&&(myPlayingObject.adjacentItems.Arriba.adjacentItems.Derecha!=null)) {
+				victims.Add (myPlayingObject.adjacentItems.Arriba.adjacentItems.Izquierda);
+				victims.Add (myPlayingObject.adjacentItems.Arriba.adjacentItems.Derecha);
 			}
 		}
-		if (myPlayingObject.adjacentItems [2] != null) {
-			if (myPlayingObject.adjacentItems [2].adjacentItems.Length > 2) {
-				victims.Add (myPlayingObject.adjacentItems [2].adjacentItems [0]);
-				victims.Add (myPlayingObject.adjacentItems [2].adjacentItems [1]);
-			}
-		}
-		if (myPlayingObject.adjacentItems [3] != null) {
-			if (myPlayingObject.adjacentItems [3].adjacentItems.Length > 2) {
-				victims.Add (myPlayingObject.adjacentItems [3].adjacentItems [0]);
-				victims.Add (myPlayingObject.adjacentItems [3].adjacentItems [1]);
+		if (myPlayingObject.adjacentItems.Abajo != null) {
+			if ((myPlayingObject.adjacentItems.Abajo.adjacentItems.Izquierda!=null)&&(myPlayingObject.adjacentItems.Abajo.adjacentItems.Derecha!=null)) {
+				victims.Add (myPlayingObject.adjacentItems.Abajo.adjacentItems.Izquierda);
+				victims.Add (myPlayingObject.adjacentItems.Abajo.adjacentItems.Derecha);
 			}
 		}
 

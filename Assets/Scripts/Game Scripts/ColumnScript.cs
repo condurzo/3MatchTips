@@ -17,6 +17,7 @@ public class ColumnScript : MonoBehaviour
 	int numberOfEmptySpace = 0;
 
 	int numberOfRows;
+	float fallingDuration;
 
 	void Awake()
 	{
@@ -170,30 +171,30 @@ public class ColumnScript : MonoBehaviour
 		{
 			if (playingObjectsScriptList [i] == null)
 				continue;
-
 			if (columnIndex == 0) {//left
-				((PlayingObject)playingObjectsScriptList [i]).adjacentItems [0] = null;
+				((PlayingObject)playingObjectsScriptList [i]).adjacentItems.Izquierda = null;
 			} else {
-				Debug.Log (i);
- 				Debug.Log (((PlayingObject)playingObjectsScriptList [i]).adjacentItems [0]);
-				Debug.Log (  ((PlayingObject)ColumnManager.instance.gameColumns [columnIndex - 1].playingObjectsScriptList [i])  );
-				((PlayingObject)playingObjectsScriptList [i]).adjacentItems [0] = ((PlayingObject)ColumnManager.instance.gameColumns [columnIndex - 1].playingObjectsScriptList [i]);
+
+				((PlayingObject)playingObjectsScriptList [i]).adjacentItems.Izquierda = ((PlayingObject)ColumnManager.instance.gameColumns [columnIndex - 1].playingObjectsScriptList [i]);
 			}
 
-			if (columnIndex == ColumnManager.instance.gameColumns.Length - 1) // right
-				((PlayingObject)playingObjectsScriptList [i]).adjacentItems [1] = null;
-			else
-				((PlayingObject)playingObjectsScriptList[i]).adjacentItems[1] = ((PlayingObject)ColumnManager.instance.gameColumns[columnIndex + 1].playingObjectsScriptList[i]);
+			if (columnIndex == ColumnManager.instance.gameColumns.Length - 1){ // right
+				((PlayingObject)playingObjectsScriptList [i]).adjacentItems.Derecha = null;
+			}else{
+				((PlayingObject)playingObjectsScriptList[i]).adjacentItems.Derecha = ((PlayingObject)ColumnManager.instance.gameColumns[columnIndex + 1].playingObjectsScriptList[i]);
+			}
 
-			if (i == 0) //up
-				((PlayingObject)playingObjectsScriptList[i]).adjacentItems[2] = null;
-			else
-				((PlayingObject)playingObjectsScriptList[i]).adjacentItems[2] = ((PlayingObject)playingObjectsScriptList[i - 1]);
+			if (i == 0){//up
+				((PlayingObject)playingObjectsScriptList[i]).adjacentItems.Arriba = null;
+			}else{
+				((PlayingObject)playingObjectsScriptList[i]).adjacentItems.Arriba = ((PlayingObject)playingObjectsScriptList[i - 1]);
+			}
 
-			if (i == numberOfRows - 1) // down
-				((PlayingObject)playingObjectsScriptList[i]).adjacentItems[3] = null;
-			else
-				((PlayingObject)playingObjectsScriptList[i]).adjacentItems[3] = ((PlayingObject)playingObjectsScriptList[i + 1]);
+			if (i == numberOfRows - 1){ // down
+				((PlayingObject)playingObjectsScriptList[i]).adjacentItems.Abajo = null;
+			}else{
+				((PlayingObject)playingObjectsScriptList[i]).adjacentItems.Abajo = ((PlayingObject)playingObjectsScriptList[i + 1]);
+			}
 		}
 	}
 
@@ -206,8 +207,36 @@ public class ColumnScript : MonoBehaviour
 		temp.transform.parent = transform;
 		temp.transform.localPosition = new Vector3(0, -index * GameManager.instance.gapBetweenObjects, 0);
 		temp.GetComponent<SpecialPlayingObject>().name = _name;
-		// iTween.ScaleFrom(temp, Vector3.zero, .6f);
-		//   print("new Candy Created");
+	}
+
+	internal void DonarAdyacentes (PlayingObject donante, PlayingObject receptor)
+	{	
+		receptor.adjacentItems = new Adyacentes ();
+		if (donante.adjacentItems.Arriba) {
+			receptor.adjacentItems.Arriba = donante.adjacentItems.Arriba;
+		}
+		if (donante.adjacentItems.Abajo) {
+			receptor.adjacentItems.Abajo = donante.adjacentItems.Abajo;
+		}
+		if (donante.adjacentItems.Izquierda) {
+			receptor.adjacentItems.Izquierda = donante.adjacentItems.Izquierda;
+		}
+		if (donante.adjacentItems.Derecha) {
+			receptor.adjacentItems.Derecha = donante.adjacentItems.Derecha;
+		}
+
+		if (donante.adjacentItems.arriba != null) {
+			donante.adjacentItems.arriba.adjacentItems.abajo = receptor;
+		}
+		if (donante.adjacentItems.abajo != null) {
+			donante.adjacentItems.abajo.adjacentItems.arriba = receptor;
+		}
+		if (donante.adjacentItems.izquierda != null) {
+			donante.adjacentItems.izquierda.adjacentItems.derecha = receptor;
+		}
+		if (donante.adjacentItems.derecha != null) {
+			donante.adjacentItems.derecha.adjacentItems.izquierda = receptor;
+		}
 	}
 
 	internal void DeleteBrustedItems()
@@ -385,14 +414,14 @@ public class ColumnScript : MonoBehaviour
 					temp9.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
 					break;
 				case 10:
-					GameObject temp10 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [18], Vector3.zero, Quaternion.identity);//ACA (0,6)
+					GameObject temp10 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)
 					temp10.GetComponent<PlayingObject> ().myColumnScript = this;
 					playingObjectsScriptList.Insert (0, temp10.GetComponent<PlayingObject> ()); //numberOfEmptySpace
 					temp10.transform.parent = transform;
 					temp10.transform.localPosition = new Vector3 (0, (i + 1) * GameManager.instance.gapBetweenObjects, 0);
 					break;
 				case 11:
-					GameObject temp11 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [18], Vector3.zero, Quaternion.identity);//ACA (0,6)
+					GameObject temp11 = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [Random.Range (0, 4)], Vector3.zero, Quaternion.identity);//ACA (0,6)
 					temp11.GetComponent<PlayingObject> ().myColumnScript = this;
 					playingObjectsScriptList.Insert (0, temp11.GetComponent<PlayingObject> ()); //numberOfEmptySpace
 					temp11.transform.parent = transform;
@@ -1040,7 +1069,7 @@ public class ColumnScript : MonoBehaviour
 		SoundFxManager.instance.columnFallSound.Play();
 	}
 
-	float fallingDuration;
+
 
 	public void StartMovingDownOldPart()
 	{

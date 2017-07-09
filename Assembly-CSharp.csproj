@@ -55,6 +55,7 @@
      <Compile Include="Assets\Mias\Scripts\isLiveNormal.cs" />
      <Compile Include="Assets\Mias\Scripts\isLiveSigno.cs" />
      <Compile Include="Assets\Mias\Scripts\selectLevels.cs" />
+     <Compile Include="Assets\Scripts\Adyacentes.cs" />
      <Compile Include="Assets\Scripts\Game Scripts\BackButton.cs" />
      <Compile Include="Assets\Scripts\Game Scripts\ColumnManager.cs" />
      <Compile Include="Assets\Scripts\Game Scripts\ColumnScript.cs" />

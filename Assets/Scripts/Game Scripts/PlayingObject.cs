@@ -23,7 +23,7 @@ public class PlayingObject : MonoBehaviour
     internal int indexInColumn;
     public bool isTraced = false;
     public bool brust = false;
-    public PlayingObject[] adjacentItems; //left,right,up,down
+    public Adyacentes adjacentItems; //left,right,up,down
 
     public bool isSelected = false;
     public int itemId;
@@ -61,8 +61,7 @@ public class PlayingObject : MonoBehaviour
         specialObjectScript = GetComponent<SpecialPlayingObject>();
         itemId = GetInstanceID();
         int ind = Random.Range(0, 6);
-
-        adjacentItems = new PlayingObject[4];
+		adjacentItems = new Adyacentes ();
 	
 	}
 
@@ -166,39 +165,39 @@ public class PlayingObject : MonoBehaviour
 				down2 = "down2";
 				down3 = "down3";
 
-				if (adjacentItems [0]) {
-					left1 = adjacentItems [0].name;
-					if (adjacentItems [0].adjacentItems [0]) {
-						left2 = adjacentItems [0].adjacentItems [0].name;
-						if (adjacentItems [0].adjacentItems [0].adjacentItems [0])
-							left3 = adjacentItems [0].adjacentItems [0].adjacentItems [0].name;
+				if (adjacentItems.Izquierda) {
+					left1 = adjacentItems.Izquierda.name;
+					if (adjacentItems.Izquierda.adjacentItems.Izquierda) {
+						left2 = adjacentItems.Izquierda.adjacentItems.Izquierda.name;
+						if (adjacentItems.Izquierda.adjacentItems.Izquierda.adjacentItems.Izquierda)
+							left3 = adjacentItems.Izquierda.adjacentItems.Izquierda.adjacentItems.Izquierda.name;
 					}
 				}
 
-				if (adjacentItems [1]) {
-					right1 = adjacentItems [1].name;
-					if (adjacentItems [1].adjacentItems [1]) {
-						right2 = adjacentItems [1].adjacentItems [1].name;
-						if (adjacentItems [1].adjacentItems [1].adjacentItems [1])
-							right3 = adjacentItems [1].adjacentItems [1].adjacentItems [1].name;
+				if (adjacentItems.Derecha) {
+					right1 = adjacentItems.Derecha.name;
+					if (adjacentItems.Derecha.adjacentItems.Derecha) {
+						right2 = adjacentItems.Derecha.adjacentItems.Derecha.name;
+						if (adjacentItems.Derecha.adjacentItems.Derecha.adjacentItems.Derecha)
+							right3 = adjacentItems.Derecha.adjacentItems.Derecha.adjacentItems.Derecha.name;
 					}
 				}
 
-				if (adjacentItems [2]) {
-					up1 = adjacentItems [2].name;
-					if (adjacentItems [2].adjacentItems [2]) {
-						up2 = adjacentItems [2].adjacentItems [2].name;
-						if (adjacentItems [2].adjacentItems [2].adjacentItems [2])
-							up3 = adjacentItems [2].adjacentItems [2].adjacentItems [2].name;
+				if (adjacentItems.Arriba) {
+					up1 = adjacentItems.Arriba.name;
+					if (adjacentItems.Arriba.adjacentItems.Arriba) {
+						up2 = adjacentItems.Arriba.adjacentItems.Arriba.name;
+						if (adjacentItems.Arriba.adjacentItems.Arriba.adjacentItems.Arriba)
+							up3 = adjacentItems.Arriba.adjacentItems.Arriba.adjacentItems.Arriba.name;
 					}
 				}
 
-				if (adjacentItems [3]) {
-					down1 = adjacentItems [3].name;
-					if (adjacentItems [3].adjacentItems [3]) {
-						down2 = adjacentItems [3].adjacentItems [3].name;
-						if (adjacentItems [3].adjacentItems [3].adjacentItems [3])
-							down3 = adjacentItems [3].adjacentItems [3].adjacentItems [3].name;
+				if (adjacentItems.Abajo) {
+					down1 = adjacentItems.Abajo.name;
+					if (adjacentItems.Abajo.adjacentItems.Abajo) {
+						down2 = adjacentItems.Abajo.adjacentItems.Abajo.name;
+						if (adjacentItems.Abajo.adjacentItems.Abajo.adjacentItems.Abajo)
+							down3 = adjacentItems.Abajo.adjacentItems.Abajo.adjacentItems.Abajo.name;
 					}
 				}
 			}
@@ -276,16 +275,34 @@ public class PlayingObject : MonoBehaviour
     internal bool isMovePossible()
     {
 
-			for (int i = 0; i < 4; i++) {
-				if (adjacentItems [i]) {
-				Debug.Log (adjacentItems [i].JustCheckIfCanBrust (name, i));
-					if (adjacentItems [i].JustCheckIfCanBrust (name, i)) {
+		if (adjacentItems.Izquierda) {
+			if (adjacentItems.Izquierda.JustCheckIfCanBrust (name, 0)) {
+				GameOperations.instance.suggestionItems [0] = this;
+				GameOperations.instance.suggestionItems [1] = adjacentItems.Izquierda;
+				return true;
+			}
+		}
+		if (adjacentItems .Derecha) {
+					if (adjacentItems.Derecha.JustCheckIfCanBrust (name, 1)) {
 						GameOperations.instance.suggestionItems [0] = this;
-						GameOperations.instance.suggestionItems [1] = adjacentItems [i];
+				GameOperations.instance.suggestionItems [1] = adjacentItems .Derecha;
 						return true;
 					}
 				}
-			}
+		if (adjacentItems.Arriba) {
+			if (adjacentItems .Arriba.JustCheckIfCanBrust (name, 2)) {
+						GameOperations.instance.suggestionItems [0] = this;
+				GameOperations.instance.suggestionItems [1] = adjacentItems.Arriba;
+						return true;
+					}
+				}
+		if (adjacentItems.Abajo) {
+			if (adjacentItems .Abajo.JustCheckIfCanBrust (name, 3)) {
+						GameOperations.instance.suggestionItems [0] = this;
+				GameOperations.instance.suggestionItems [1] = adjacentItems.Abajo;
+						return true;
+					}
+				}
 
 			return false;
 
@@ -293,17 +310,41 @@ public class PlayingObject : MonoBehaviour
 
     static PlayingObject parentCallingScript;
 
-    internal bool isMovePossibleInDirection(int dir)
-    {
+    internal bool isMovePossibleInDirection (int dir)
+	{
 
-			parentCallingScript = this;
-			
-			if (adjacentItems [dir]) {
-			Debug.Log (adjacentItems [dir].JustCheckIfCanBrust (name, dir));
-				if (adjacentItems [dir].JustCheckIfCanBrust (name, dir)) {
-					return true;
+		parentCallingScript = this;
+		switch (dir) {
+			case 0:
+				if (adjacentItems.Izquierda) {
+					if (adjacentItems.Izquierda.JustCheckIfCanBrust (name, dir)) {
+						return true;
+					}
 				}
-			}
+			break;
+		case 1:
+				if (adjacentItems.Derecha) {
+					if (adjacentItems.Derecha.JustCheckIfCanBrust (name, dir)) {
+						return true;
+					}
+				}
+			break;
+		case 2:
+				if (adjacentItems.Arriba) {
+					if (adjacentItems.Arriba.JustCheckIfCanBrust (name, dir)) {
+						return true;
+					}
+				}
+			break;
+		case 3:
+				if (adjacentItems.Abajo) {
+					if (adjacentItems.Abajo.JustCheckIfCanBrust (name, dir)) {
+						return true;
+					}
+				}
+			break;
+		}
+
 
 			return false;
 
@@ -318,27 +359,26 @@ public class PlayingObject : MonoBehaviour
 		
 				if (isDestroyed)
 					return;
-
-				if (myColumnScript.jellyAvailability != null) {
-					if (myColumnScript.jellyAvailability [indexInColumn] == 2) {
-						myColumnScript.jellyAvailability [indexInColumn] = 1;
-						Destroy (((GameObject)myColumnScript.jellyObjects [indexInColumn]).transform.GetChild (0).gameObject);
-						Instantiate (GamePrefabs.instance.jellyParticles, transform.position, Quaternion.identity);
-						GameManager.instance.totalNoOfJellies--;
-					} else if (myColumnScript.jellyAvailability [indexInColumn] == 1) {
-						myColumnScript.jellyAvailability [indexInColumn] = 0;
-						Destroy (((GameObject)myColumnScript.jellyObjects [indexInColumn]));
-						Instantiate (GamePrefabs.instance.jellyParticles, transform.position, Quaternion.identity);
-						GameManager.instance.totalNoOfJellies--;
-					}
-					GameManager.instance.jellyText.text = "Jelly : " + GameManager.instance.totalNoOfJellies.ToString ();
-
-				}
+//			Debug.Log (myColumnScript);
+//				if (myColumnScript.jellyAvailability != null) {
+//					if (myColumnScript.jellyAvailability [indexInColumn] == 2) {
+//						myColumnScript.jellyAvailability [indexInColumn] = 1;
+//						Destroy (((GameObject)myColumnScript.jellyObjects [indexInColumn]).transform.GetChild (0).gameObject);
+//						Instantiate (GamePrefabs.instance.jellyParticles, transform.position, Quaternion.identity);
+//						GameManager.instance.totalNoOfJellies--;
+//					} else if (myColumnScript.jellyAvailability [indexInColumn] == 1) {
+//						myColumnScript.jellyAvailability [indexInColumn] = 0;
+//						Destroy (((GameObject)myColumnScript.jellyObjects [indexInColumn]));
+//						Instantiate (GamePrefabs.instance.jellyParticles, transform.position, Quaternion.identity);
+//						GameManager.instance.totalNoOfJellies--;
+//					}
+//					GameManager.instance.jellyText.text = "Jelly : " + GameManager.instance.totalNoOfJellies.ToString ();
+//
+//				}
 
 				isDestroyed = true;
 				//GameManager.numberOfItemsPoppedInaRow++;
 				//ACA chekeo el color de la bola que exploto
-				Debug.Log(this.gameObject.name);
 				if(this.gameObject.name == "Playing Object 1(Clone)"){
 					GameManager.explotoAgua = true;
 				}
