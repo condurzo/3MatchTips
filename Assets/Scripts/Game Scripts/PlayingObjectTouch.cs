@@ -44,7 +44,7 @@ public class PlayingObjectTouch : MonoBehaviour
 			playingObjectScript.myColumnScript.StartMovingDownNewPart();
 			playingObjectScript.myColumnScript.DonarAdyacentes (playingObjectScript, bomb.GetComponent<PlayingObject> ());
 			bomb.GetComponent<PlayingObject> ().adjacentItems = playingObjectScript.adjacentItems;
-			GameOperations.instance.AssignNeighbours ();
+			GameOperations.instance.Invoke("AssignNeighbours", .1f);
 			Destroy (this.gameObject);
 			return;
 		}

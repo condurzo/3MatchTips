@@ -55,10 +55,9 @@ public class SwapTwoObject : MonoBehaviour
         ObjectType type1 = item1.objectType;
         ObjectType type2 = item2.objectType;
 
-
         if (type1 == ObjectType.None && type2 == ObjectType.None)
         {
-            if (item1.isMovePossibleInDirection(GetDirectionOfSecondObject(object1, object2)) == false && (item2.isMovePossibleInDirection(GetDirectionOfSecondObject(object2, object1)) == false))
+             if (item1.isMovePossibleInDirection(GetDirectionOfSecondObject(object1, object2)) == false && (item2.isMovePossibleInDirection(GetDirectionOfSecondObject(object2, object1)) == false))
             {
                 Invoke("ChangePositionBack", GameManager.instance.swappingTime);
                 return;
@@ -70,8 +69,8 @@ public class SwapTwoObject : MonoBehaviour
                 GameOperations.instance.Invoke("AssignNeighbours", .1f);
             }
         }
-        else if ((type2 == ObjectType.None && (type1 == ObjectType.Horizontal || type1 == ObjectType.Vertical))
-            || (type1 == ObjectType.None && (type2 == ObjectType.Horizontal || type2 == ObjectType.Vertical)))
+		else if ((type2 == ObjectType.None && (type1 == ObjectType.Horizontal || type1 == ObjectType.Vertical || type1 == ObjectType.Bomb))
+			|| (type1 == ObjectType.None && (type2 == ObjectType.Horizontal || type2 == ObjectType.Vertical || type2 == ObjectType.Bomb)))
         {
             if (item1.isMovePossibleInDirection(GetDirectionOfSecondObject(object1, object2)) == false && (item2.isMovePossibleInDirection(GetDirectionOfSecondObject(object2, object1)) == false))
             {

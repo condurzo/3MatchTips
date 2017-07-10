@@ -7,6 +7,7 @@ public class Adyacentes : MonoBehaviour {
 	public PlayingObject abajo;
 	public PlayingObject derecha;
 	public PlayingObject izquierda;
+	public PlayingObject own;
 
 
 	public PlayingObject Arriba{
@@ -33,19 +34,18 @@ public class Adyacentes : MonoBehaviour {
 	        this.derecha = value;
 	    }
 	}
-	public PlayingObject Izquierda{
-	    get{
-	        return this.izquierda;
-	    }
-	    set{
-
+	public PlayingObject Izquierda {
+		get {
+			return this.izquierda;
+		}
+		set {
 	        this.izquierda = value;
 	    }
 	}
 
-	public Adyacentes ()
+	public Adyacentes (PlayingObject po)
 	{
-		
+		own = po;
 		arriba = null;
 		abajo = null;
 		derecha = null;

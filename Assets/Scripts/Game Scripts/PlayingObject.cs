@@ -61,7 +61,7 @@ public class PlayingObject : MonoBehaviour
         specialObjectScript = GetComponent<SpecialPlayingObject>();
         itemId = GetInstanceID();
         int ind = Random.Range(0, 6);
-		adjacentItems = new Adyacentes ();
+		adjacentItems = new Adyacentes (this);
 	
 	}
 
@@ -217,12 +217,10 @@ public class PlayingObject : MonoBehaviour
 			up1 = "up1";
 
 		bool canBurst = false;
-	
 		if ((objName == left1 && objName == left2) || (objName == left1 && objName == right1) || (objName == right1 && objName == right2)
 		    || (objName == up1 && objName == up2) || (objName == up1 && objName == down1) || (objName == down1 && objName == down2)) {
 			canBurst = true;
 			GameOperations.instance.doesHaveBrustItem = true;
-
 		}
 		if (canBurst) {
 			if (parentCallingScript)
@@ -315,39 +313,38 @@ public class PlayingObject : MonoBehaviour
 
 		parentCallingScript = this;
 		switch (dir) {
-			case 0:
-				if (adjacentItems.Izquierda) {
-					if (adjacentItems.Izquierda.JustCheckIfCanBrust (name, dir)) {
-						return true;
-					}
+		case 0:
+			if (adjacentItems.Izquierda) {
+				if (adjacentItems.Izquierda.JustCheckIfCanBrust (name, dir)) {
+					return true;
 				}
+
+			} 
 			break;
 		case 1:
-				if (adjacentItems.Derecha) {
-					if (adjacentItems.Derecha.JustCheckIfCanBrust (name, dir)) {
-						return true;
-					}
+			if (adjacentItems.Derecha) {
+				if (adjacentItems.Derecha.JustCheckIfCanBrust (name, dir)) {
+					return true;
 				}
+			} 
 			break;
 		case 2:
-				if (adjacentItems.Arriba) {
-					if (adjacentItems.Arriba.JustCheckIfCanBrust (name, dir)) {
-						return true;
-					}
+			if (adjacentItems.Arriba) {
+				if (adjacentItems.Arriba.JustCheckIfCanBrust (name, dir)) {
+					return true;
 				}
+			} 
 			break;
 		case 3:
-				if (adjacentItems.Abajo) {
-					if (adjacentItems.Abajo.JustCheckIfCanBrust (name, dir)) {
-						return true;
-					}
+			if (adjacentItems.Abajo) {
+				if (adjacentItems.Abajo.JustCheckIfCanBrust (name, dir)) {
+					return true;
 				}
+			}
 			break;
 		}
 
-
-			return false;
-
+		return false;
     }
 
     bool isDestroyed = false;

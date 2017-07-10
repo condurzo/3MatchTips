@@ -211,7 +211,7 @@ public class ColumnScript : MonoBehaviour
 
 	internal void DonarAdyacentes (PlayingObject donante, PlayingObject receptor)
 	{	
-		receptor.adjacentItems = new Adyacentes ();
+		receptor.adjacentItems = new Adyacentes (receptor);
 		if (donante.adjacentItems.Arriba) {
 			receptor.adjacentItems.Arriba = donante.adjacentItems.Arriba;
 		}

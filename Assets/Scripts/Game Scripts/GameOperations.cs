@@ -158,9 +158,4 @@ public class GameOperations : MonoBehaviour
         Invoke("CheckBoardState", GameManager.instance.objectFallingDuration);
         GameManager.instance.objectFallingDuration = GameManager.instance.initialObjectFallingDuration;
     }
-
-   
-
-
-    
 }

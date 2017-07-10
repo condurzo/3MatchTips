@@ -40,8 +40,6 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-
-
     }
 
 	void Start () 
@@ -56,7 +54,6 @@ public class GameManager : MonoBehaviour
         //scoreText.text = "Score : " + score.ToString();
 		scoreText.text = score.ToString();
         jellyText.text = "Jelly : " + totalNoOfJellies.ToString();
-	
 	}
 
     internal void AddScore()
@@ -76,34 +73,25 @@ public class GameManager : MonoBehaviour
         score += temp;
         //scoreText.text = "Score : " + score.ToString();
 		scoreText.text = score.ToString();
-
-
-
-    }
+	 }
 
 	void Update(){
-			if (!Tiempo.Playing) {
-				if (bestScoreTemp == 0) {
-					PlayerPrefs.SetInt ("BestScore", score);
-					NewBestScoreText.SetActive (true);
-					BestScoreTextFinal.text = score.ToString ();
-					ScoreTextFinal.text = score.ToString ();
-				}
-				if (score > bestScoreTemp) {
-					PlayerPrefs.SetInt ("BestScore", score);
-					NewBestScoreText.SetActive (true);
-					BestScoreTextFinal.text = score.ToString ();
-					ScoreTextFinal.text = score.ToString ();
-				} else {
-					ScoreTextFinal.text = score.ToString ();
-					BestScoreTextFinal.text = bestScoreTemp.ToString ();
-				}
-			
+		if (!Tiempo.Playing) {
+			if (bestScoreTemp == 0) {
+				PlayerPrefs.SetInt ("BestScore", score);
+				NewBestScoreText.SetActive (true);
+				BestScoreTextFinal.text = score.ToString ();
+				ScoreTextFinal.text = score.ToString ();
 			}
-
+			if (score > bestScoreTemp) {
+				PlayerPrefs.SetInt ("BestScore", score);
+				NewBestScoreText.SetActive (true);
+				BestScoreTextFinal.text = score.ToString ();
+				ScoreTextFinal.text = score.ToString ();
+			} else {
+				ScoreTextFinal.text = score.ToString ();
+				BestScoreTextFinal.text = bestScoreTemp.ToString ();
+			}
+		}
 	}
-
-
-
-   
 }
