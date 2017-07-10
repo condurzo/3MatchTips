@@ -349,30 +349,30 @@ public class PlayingObject : MonoBehaviour
 
     bool isDestroyed = false;
 
-    internal void DestroyMe()
-    {
-			if (Tiempo.Playing) {
+    internal void DestroyMe ()
+	{
+		if (Tiempo.Playing) {
 
 		
-				if (isDestroyed)
-					return;
-//			Debug.Log (myColumnScript);
-//				if (myColumnScript.jellyAvailability != null) {
-//					if (myColumnScript.jellyAvailability [indexInColumn] == 2) {
-//						myColumnScript.jellyAvailability [indexInColumn] = 1;
-//						Destroy (((GameObject)myColumnScript.jellyObjects [indexInColumn]).transform.GetChild (0).gameObject);
-//						Instantiate (GamePrefabs.instance.jellyParticles, transform.position, Quaternion.identity);
-//						GameManager.instance.totalNoOfJellies--;
-//					} else if (myColumnScript.jellyAvailability [indexInColumn] == 1) {
-//						myColumnScript.jellyAvailability [indexInColumn] = 0;
-//						Destroy (((GameObject)myColumnScript.jellyObjects [indexInColumn]));
-//						Instantiate (GamePrefabs.instance.jellyParticles, transform.position, Quaternion.identity);
-//						GameManager.instance.totalNoOfJellies--;
-//					}
-//					GameManager.instance.jellyText.text = "Jelly : " + GameManager.instance.totalNoOfJellies.ToString ();
-//
-//				}
+			if (isDestroyed)
+				return;
 
+			if (objectType != ObjectType.Bomb) {
+				if (myColumnScript.jellyAvailability != null) {
+					if (myColumnScript.jellyAvailability [indexInColumn] == 2) {
+						myColumnScript.jellyAvailability [indexInColumn] = 1;
+						Destroy (((GameObject)myColumnScript.jellyObjects [indexInColumn]).transform.GetChild (0).gameObject);
+						Instantiate (GamePrefabs.instance.jellyParticles, transform.position, Quaternion.identity);
+						GameManager.instance.totalNoOfJellies--;
+					} else if (myColumnScript.jellyAvailability [indexInColumn] == 1) {
+						myColumnScript.jellyAvailability [indexInColumn] = 0;
+						Destroy (((GameObject)myColumnScript.jellyObjects [indexInColumn]));
+						Instantiate (GamePrefabs.instance.jellyParticles, transform.position, Quaternion.identity);
+						GameManager.instance.totalNoOfJellies--;
+					}
+					GameManager.instance.jellyText.text = "Jelly : " + GameManager.instance.totalNoOfJellies.ToString ();
+				}
+			}
 				isDestroyed = true;
 				//GameManager.numberOfItemsPoppedInaRow++;
 				//ACA chekeo el color de la bola que exploto

@@ -16,6 +16,7 @@ public class PlayingObjectTouch : MonoBehaviour
 
     internal void OnMouseDown ()
 	{
+		//CHEAT BOMBA
 		if (Input.GetKey (KeyCode.B)) {
 			int num = 0;
 			switch(this.gameObject.name){
@@ -35,7 +36,7 @@ public class PlayingObjectTouch : MonoBehaviour
 				num = 0;
 				break;
 			}
-		GameObject bomb = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [num], Vector3.zero, Quaternion.identity);//ACA (0,6)
+			GameObject bomb = (GameObject)Instantiate (GameManager.instance.playingObjectPrefabs [num], Vector3.zero, Quaternion.identity);//ACA (0,6)
 			bomb.transform.SetParent(this.gameObject.transform.parent);
 			CopyComponent<PlayingObject> (playingObjectScript, bomb);
 			bomb.GetComponent<PlayingObject> ().objectType = ObjectType.Bomb;
@@ -48,6 +49,9 @@ public class PlayingObjectTouch : MonoBehaviour
 			Destroy (this.gameObject);
 			return;
 		}
+
+
+
         if (GameManager.instance.isBusy)
             return;
 
