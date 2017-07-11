@@ -66,85 +66,42 @@ public class PlayingObject : MonoBehaviour
 	}
 
 
-    void CheckForSpecialCandyFormation(string objName)//ACA CHEKEO PARA METER 4 o 5
+    bool CheckForSpecialCandyFormation(string objName)//ACA CHEKEO PARA METER 4 o 5
     {
 		if (Tiempo.Playing) {
+			Debug.Log ("ACTIVADOS: " + PlayerPrefs.GetInt ("TodosActivados").ToString ());
 			if (PlayerPrefs.GetInt ("TodosActivados") == 1) {
 				if (objName == left2 && objName == left1 && objName == right1 && objName == right2) {
 					parentCallingScript.specialObjectToForm = GameManager.instance.universalPlayingObjectPrefab;
+					return true;
 				} else if (objName == up2 && objName == up1 && objName == down1 && objName == down2) {
 					parentCallingScript.specialObjectToForm = GameManager.instance.universalPlayingObjectPrefab;
+					return true;
 				}
 				//}
 				//ACA HACER LOGICA DE SI ES AGUA, FUEGO ...... para que no aparescan
 
 				if ((objName == left2 && objName == left1 && objName == right1) || (objName == left1 && objName == right1 && objName == right2)) {
 					if (Random.value < .5f) {
-					
-						if (parentCallingScript.horizontalPowerPrefab.name == "Horizontal Split 1") {
-							Debug.Log ("1");
-						}
-						if (parentCallingScript.horizontalPowerPrefab.name == "Horizontal Split 2") {
-							Debug.Log ("2");
-						}
-						if (parentCallingScript.horizontalPowerPrefab.name == "Horizontal Split 3") {
-							Debug.Log ("3");
-						}
-						if (parentCallingScript.horizontalPowerPrefab.name == "Horizontal Split 4") {
-							Debug.Log ("4");
-						}
 						parentCallingScript.specialObjectToForm = parentCallingScript.horizontalPowerPrefab;
 					} else {
-						if (parentCallingScript.verticalPowerPrefab.name == "Vertical Split 1") {
-							Debug.Log ("1");
-						}
-						if (parentCallingScript.verticalPowerPrefab.name == "Vertical Split 2") {
-							Debug.Log ("2");
-						}
-						if (parentCallingScript.verticalPowerPrefab.name == "Vertical Split 3") {
-							Debug.Log ("3");
-						}
-						if (parentCallingScript.verticalPowerPrefab.name == "Vertical Split 4") {
-							Debug.Log ("4");
-						}
 						parentCallingScript.specialObjectToForm = parentCallingScript.verticalPowerPrefab;
 					}
+					return true;
 				} else if ((objName == up2 && objName == up1 && objName == down1) || (objName == up1 && objName == down1 && objName == down2)) {
 					if (Random.value < .5f) {
-						if (parentCallingScript.horizontalPowerPrefab.name == "Horizontal Split 1") {
-							Debug.Log ("1");
-						}
-						if (parentCallingScript.horizontalPowerPrefab.name == "Horizontal Split 2") {
-							Debug.Log ("2");
-						}
-						if (parentCallingScript.horizontalPowerPrefab.name == "Horizontal Split 3") {
-							Debug.Log ("3");
-						}
-						if (parentCallingScript.horizontalPowerPrefab.name == "Horizontal Split 4") {
-							Debug.Log ("4");
-						}
 						parentCallingScript.specialObjectToForm = parentCallingScript.horizontalPowerPrefab;
 					} else {
-						if (parentCallingScript.verticalPowerPrefab.name == "Vertical Split 1") {
-							Debug.Log ("1");
-						}
-						if (parentCallingScript.verticalPowerPrefab.name == "Vertical Split 2") {
-							Debug.Log ("2");
-						}
-						if (parentCallingScript.verticalPowerPrefab.name == "Vertical Split 3") {
-							Debug.Log ("3");
-						}
-						if (parentCallingScript.verticalPowerPrefab.name == "Vertical Split 4") {
-							Debug.Log ("4");
-						}
 						parentCallingScript.specialObjectToForm = parentCallingScript.verticalPowerPrefab;
 					}
+					return true;
 				}
 
 
 			}
+			return false;
 		}
-
+		return false;
     }
 
 
@@ -224,7 +181,6 @@ public class PlayingObject : MonoBehaviour
 		}
 		if (canBurst) {
 			if (parentCallingScript)
-
 				CheckForSpecialCandyFormation (objName);
 		}
 		return canBurst;
